@@ -160,6 +160,3 @@ cython_debug/
 #.idea/
 artifacts/*
 creds.txt
-dvc.lock
-.dvcignore
-
