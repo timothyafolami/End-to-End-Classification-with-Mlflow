@@ -45,23 +45,22 @@ def create_directories(path_to_directories: list, verbose=True):
         ignore_log (bool, optional): ignore if multiple dirs is to be created. Defaults to True.
     """
     for path in path_to_directories:
-        if not os.path.exists(path):
-            os.makedirs(path)
-            if verbose:
-                logger.info(f"Created directory at {path}")
+        os.makedirs(path, exist_ok=True)
+        if verbose:
+            logger.info(f"Created directory at {path}")
 
 @ensure_annotations
-def save_json(path_to_json: Path, content: any):
+def save_json(path: Path, data: dict):
     """Save json file
     
     Args:
         path_to_json (Path): path to json file
         content (any): content to save
     """
-    with open(path_to_json, "w") as json_file:
-        json.dump(content, json_file, indent=4)
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
 
-    logger.info(f"Saved json file at {path_to_json}")
+    logger.info(f"Saved json file at {path}")
 
 @ensure_annotations
 def load_json(path: Path) -> ConfigBox:
@@ -88,7 +87,7 @@ def save_bin(data: Any, path: Path):
         data (Any): data to save
         path (Path): path to save
     """
-    joblib.dump(data, path)
+    joblib.dump(value=data,filename= path)
     logger.info(f"Saved binary file at {path}")
 
 @ensure_annotations
@@ -115,7 +114,7 @@ def get_size(path: Path) -> str:
     Returns:
             str: size in KB
     """
-    size_in_kb = os.path.getsize(path) / 1024
+    size_in_kb = round(os.path.getsize(path) / 1024)
     return f"~ {size_in_kb} KB"
 
 def decodeImage(imgstring, fileName):

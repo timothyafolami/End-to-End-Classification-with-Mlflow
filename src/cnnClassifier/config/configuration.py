@@ -1,9 +1,10 @@
 from cnnClassifier.constants import *
 import os
-from cnnClassifier.utils.common import read_yaml, create_directories
+from cnnClassifier.utils.common import read_yaml, create_directories, save_json
 from cnnClassifier.entity.config_entity import (DataIngestionConfig,
                                                 PrepareBaseModelConfig,
-                                                TrainingConfig)
+                                                TrainingConfig,
+                                                EvaluationConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -30,17 +31,6 @@ class ConfigurationManager:
 
         return data_ingestion_config
         
-        
-class ConfigurationManager:
-    def __init__(
-            self,
-            config_path = CONFIG_FILE_PATH,
-            params_filepath = PARAMS_FILE_PATH
-            ):
-        self.config = read_yaml(config_path)
-        self.params = read_yaml(params_filepath)
-
-        create_directories([self.config.artifacts_root])
 
     def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
         config = self.config.prepare_base_model
@@ -60,18 +50,6 @@ class ConfigurationManager:
 
         return prepare_base_model_config
     
-        
-class ConfigurationManager:
-    def __init__(
-            self,
-            config_path = CONFIG_FILE_PATH,
-            params_filepath = PARAMS_FILE_PATH
-            ):
-        self.config = read_yaml(config_path)
-        self.params = read_yaml(params_filepath)
-
-        create_directories([self.config.artifacts_root])
-
     
     def get_training_config(self) -> TrainingConfig:
         training = self.config.training
@@ -94,3 +72,14 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/chest-cancer-data/",
+            mlflow_url="https://dagshub.com/timothyafolami/End-to-End-Classification-with-Mlflow.mlflow",
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE, 
+            params_batch_size=self.params.BATCH_SIZE,
+        )
+        return eval_config

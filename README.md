@@ -13,3 +13,27 @@
 8. Update the main.py
 9. Update the dvc.yaml
 ```
+
+#### cmd
+```
+- mlflow ui
+```
+
+### dagshbub
+[dagshub](https://dagshub.com/)
+
+MLFLOW_TRACKING_URI=https://dagshub.com/timothyafolami/End-to-End-Classification-with-Mlflow.mlflow \
+MLFLOW_TRACKING_USERNAME=username \
+MLFLOW_TRACKING_PASSWORD= your password \
+python script.py
+
+Run this to export as env variables:
+
+```bash
+export MLFLOW_TRACKING_URI=https://dagshub.com/timothyafolami/End-to-End-Classification-with-Mlflow.mlflow 
+
+export MLFLOW_TRACKING_USERNAME=username
+
+export MLFLOW_TRACKING_PASSWORD= your password
+
+```
