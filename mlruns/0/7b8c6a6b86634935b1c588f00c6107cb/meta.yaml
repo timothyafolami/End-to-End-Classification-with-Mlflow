@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/timmy/Downloads/End%20to%20End%20ML%20projects/End-to-End-Classification-with-Mlflow/mlruns/0/7b8c6a6b86634935b1c588f00c6107cb/artifacts
+end_time: 1705498410732
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7b8c6a6b86634935b1c588f00c6107cb
+run_name: gregarious-mole-997
+run_uuid: 7b8c6a6b86634935b1c588f00c6107cb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1705498395891
+status: 3
+tags: []
+user_id: timmy
