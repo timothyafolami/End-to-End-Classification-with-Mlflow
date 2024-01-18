@@ -47,7 +47,7 @@ class ConfigurationManager:
             params_weights=self.params.WEIGHTS, 
             params_classes=self.params.CLASSES
         )
-
+        
         return prepare_base_model_config
     
     
@@ -75,7 +75,7 @@ class ConfigurationManager:
     
     def get_evaluation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
-            path_of_model="artifacts/training/model.h5",
+            path_of_model="artifacts/training/new_model.h5",
             training_data="artifacts/data_ingestion/cancer-data/",
             mlflow_url="https://dagshub.com/timothyafolami/End-to-End-Classification-with-Mlflow.mlflow",
             all_params=self.params,

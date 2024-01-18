@@ -35,7 +35,7 @@ stages:
       - BATCH_SIZE
       - AUGMENTATION
     outs:
-      - artifacts/training/model.h5
+      - artifacts/training/new_model.h5
 
   evaluation:
     cmd: python src/cnnClassifier/pipeline/stage_04_evaluation.py
@@ -43,7 +43,7 @@ stages:
       - src/cnnClassifier/pipeline/stage_04_evaluation.py
       - config/config.yaml
       - artifacts/data_ingestion/cancer-data
-      - artifacts/training/model.h5
+      - artifacts/training/new_model.h5
     params:
       - IMAGE_SIZE
       - BATCH_SIZE
