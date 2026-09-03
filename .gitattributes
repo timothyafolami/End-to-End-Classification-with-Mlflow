@@ -1,0 +1,6 @@
+# MLflow writes TensorFlow SavedModel bundles into mlruns/. GitHub reads their
+# saved_model.pb files as PureBasic source, so this repository was reported as a
+# PureBasic project. Marking the run artifacts as generated keeps them in the
+# repository but out of language statistics and diffs.
+mlruns/** linguist-generated=true
+*.pb      linguist-generated=true
